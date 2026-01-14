@@ -1,0 +1,1272 @@
+/* ============================================================
+   THE 5 LOTUS — CLEANED & PREMIUM
+   Theme: Ivory • Gold • Sage • Deep Text
+   Fonts: Playfair Display + Poppins
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===================== ROOT & GLOBAL ===================== */
+
+:root{
+  /* Original theme */
+  --bg: #FBF8F3;
+  --text: #1F3D36;
+  --sage: #7A9D96;
+  --gold1: #B89B5E;
+  --gold2: #D7B97D;
+  --card: #FFFFFF;
+  --shadow: rgba(31,61,54,0.10);
+
+  /* Extra global */
+  --ivory: #fbf8f3;
+  --gold: #b68c3a;
+  --text-dark: #333;
+  --text-light: #555;
+  --card-bg: #ffffff;
+}
+
+*{
+  box-sizing:border-box;
+  transition: all 0.25s ease;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  padding:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fbf8f3, #f7f2ea);
+  color:var(--text-dark);
+  line-height:1.6;
+}
+
+h1, h2, h3{
+  font-family:'Playfair Display', serif;
+  margin:0 0 10px;
+}
+
+/* Generic helpers */
+.section{
+  max-width:1100px;
+  margin:60px auto;
+  padding:30px;
+  animation: fadeUp 0.9s ease;
+}
+
+.center{
+  text-align:center;
+}
+
+/* ===================== NAVBAR ===================== */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(10px);
+  background:rgba(251,248,243,0.92);
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-logo{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  color:#222 !important;          /* your choice: dark charcoal */
+  text-decoration:none !important;
+}
+
+.nav-logo:hover{
+  color:#000 !important;
+  text-decoration:none;
+}
+
+.nav-menu{
+  list-style:none;
+  display:flex;
+  gap:32px;
+  margin:0;
+  padding:0;
+}
+
+.nav-menu li{
+  position:relative;
+}
+
+.nav-menu a{
+  text-decoration:none;
+  color:var(--text-dark);
+  font-weight:500;
+  padding:6px 0;
+}
+
+.nav-menu a:hover{
+  color:var(--gold);
+  transform:translateY(-2px);
+}
+
+/* ===================== PREMIUM DROPDOWN ===================== */
+
+.has-dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  min-width:230px;
+  padding:12px 0;
+  list-style:none;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(16px);
+  border-radius:12px;
+  border:1px solid rgba(212,175,55,0.18);
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(12px);
+  transition:all 0.35s ease;
+}
+
+.has-dropdown:hover .dropdown-menu{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+.dropdown-menu li{
+  opacity:0;
+  transform:translateX(-8px);
+  transition:all 0.3s ease;
+  transition-delay:calc(var(--i) * 0.07s);
+}
+
+.has-dropdown:hover .dropdown-menu li{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.dropdown-menu li a{
+  display:block;
+  padding:12px 20px;
+  font-size:14.5px;
+  color:var(--text-dark);
+  text-decoration:none;
+}
+
+.dropdown-menu li a:hover{
+  background:rgba(212,175,55,0.12);
+  padding-left:28px;
+  color:var(--gold);
+  box-shadow:inset 3px 0 var(--gold);
+}
+
+/* ===================== MOBILE NAV ===================== */
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  z-index:2000;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:var(--text);
+  border-radius:4px;
+}
+
+.mobile-menu{
+  position:fixed;
+  right:-260px;
+  top:0;
+  height:100vh;
+  width:260px;
+  background:var(--card);
+  box-shadow:-5px 0 30px rgba(0,0,0,0.15);
+  padding-top:80px;
+  transition:0.4s ease;
+  z-index:1500;
+}
+
+.mobile-menu ul{
+  list-style:none;
+  padding:0 25px;
+}
+
+.mobile-menu li{
+  margin-bottom:20px;
+}
+
+.mobile-menu a{
+  text-decoration:none;
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+}
+
+.mobile-menu a:hover{
+  color:var(--gold1);
+}
+
+.mobile-menu.active{
+  right:0;
+}
+
+@media (max-width:860px){
+  .desktop-nav{
+    display:none;
+  }
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* ===================== HERO (HOME) ===================== */
+
+.hero-logo{
+  text-align:center;
+  padding:90px 20px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(251,248,243,1));
+  animation: fadeUp 1.2s ease;
+}
+
+.hero-logo img{
+  width:220px;
+  margin-bottom:20px;
+  opacity:0;
+  animation: fadeIn 1.3s ease forwards;
+}
+
+.hero-logo h1{
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin:8px 0;
+  color:var(--text);
+}
+
+.hero-logo p{
+  color:var(--sage);
+  margin-bottom:30px;
+  font-size:15px;
+}
+
+.cta-btn{
+  padding:14px 36px;
+  background:linear-gradient(135deg,var(--gold1),var(--gold2));
+  color:white;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 12px 25px rgba(184,155,94,0.25);
+}
+
+.cta-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 20px 40px rgba(184,155,94,0.35);
+}
+
+/* ===================== GENERIC CARDS ===================== */
+
+.cards-row{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:26px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  width:270px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 15px 40px var(--shadow);
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 55px rgba(0,0,0,0.12);
+}
+
+/* ===================== SERVICES (HOME & PAGES) ===================== */
+
+.services{
+  padding:60px 20px;
+  text-align:center;
+  background:#fdf6f6;
+}
+
+.section-title{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  margin:40px 0 20px;
+  color:var(--text);
+}
+
+.services-container{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+}
+
+/* simple service tiles */
+.service-item{
+  background:var(--card);
+  padding:18px 20px;
+  border-left:5px solid var(--gold1);
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.07);
+  display:block;
+}
+
+.service-item h3{
+  margin:0 0 6px;
+  font-size:17px;
+  font-weight:600;
+  color:var(--text);
+}
+
+.service-item p{
+  margin:0;
+  font-size:14px;
+  color:#444;
+  line-height:1.5;
+  max-width:240px;
+}
+
+/* grid used in services page */
+.services-wrapper{
+  max-width:1100px;
+  margin:70px auto 50px;
+  padding:20px;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:30px;
+}
+
+/* bigger cards used in specializations/tests */
+.service-card{
+  background:var(--card-bg);
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  cursor:pointer;
+  opacity:0;
+  transform:translateY(20px);
+  animation: cardFade 0.6s ease-out forwards;
+}
+
+.service-card h3{
+  margin-bottom:10px;
+  font-size:20px;
+  color:#5a2e2e;
+}
+
+.service-card p{
+  color:#555;
+  font-size:0.95rem;
+  line-height:1.4;
+}
+
+.service-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.10);
+}
+
+/* ===================== HEADINGS WITH ICON ===================== */
+
+.subheading{
+  margin:40px 0 18px;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:0.4px;
+  text-transform:uppercase;
+  color:var(--gold1);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin:40px 0 20px;
+  color:var(--text);
+}
+
+.section-heading span{
+  font-size:18px;
+  color:var(--gold1);
+}
+
+.lotus-icon{
+  width:24px;
+  height:24px;
+}
+
+.lotus-icon svg{
+  width:22px;
+  height:22px;
+  stroke:var(--gold1);
+  display:inline-block;
+  vertical-align:middle;
+  margin-right:6px;
+  transform:translateY(-2px);
+  opacity:0.9;
+}
+
+/* ===================== ABOUT PAGE — 50 CRORE FOUNDER ===================== */
+
+.founder,
+.founder-premium{
+  max-width:1200px;
+  margin:140px auto 60px;
+  padding:50px;
+  background:var(--card);
+  display:flex;
+  gap:50px;
+  align-items:center;
+  border-radius:24px;
+  box-shadow:0 35px 60px rgba(0,0,0,0.09);
+}
+
+.founder-img{
+  width:380px;
+  border-radius:18px;
+  object-fit:cover;
+  box-shadow:0 18px 35px rgba(0,0,0,0.15);
+}
+
+.founder-title,
+.founder-premium-title{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  color:var(--text);
+}
+
+.founder-role,
+.founder-premium-role{
+  color:var(--sage);
+  margin:6px 0 14px;
+}
+
+.founder-text p,
+.founder-premium-text{
+  font-size:16px;
+  line-height:1.7;
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+.founder-quote{
+  margin-top:22px;
+  padding:14px 20px;
+  border-left:4px solid var(--gold1);
+  font-style:italic;
+  color:var(--text);
+  background:rgba(184,155,94,0.08);
+  border-radius:8px;
+}
+
+@media(max-width:820px){
+  .founder,
+  .founder-premium{
+    flex-direction:column;
+    padding:35px;
+    text-align:center;
+  }
+  .founder-img{
+    width:80%;
+  }
+}
+
+/* ===================== ABOUT — VALUES GRID ===================== */
+
+.values-luxury{
+  margin:90px auto;
+  max-width:1200px;
+  text-align:center;
+}
+
+.values-luxury-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+  margin-top:35px;
+}
+
+.v-card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  border-top:4px solid var(--gold1);
+}
+
+.v-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.v-card p{
+  font-size:15px;
+  line-height:1.55;
+}
+
+/* ===================== CLINIC CAROUSEL ===================== */
+
+.clinic-section{
+  margin-top:120px;
+}
+
+.carousel-container{
+  max-width:900px;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.12);
+}
+
+.carousel-track{
+  display:flex;
+  transition:transform 0.75s ease;
+}
+
+.slide{
+  min-width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.carousel-dots{
+  text-align:center;
+  margin-top:15px;
+}
+
+.carousel-dots .dot{
+  height:12px;
+  width:12px;
+  margin:0 6px;
+  background:#d9c7a1;
+  border-radius:50%;
+  display:inline-block;
+  opacity:0.4;
+  cursor:pointer;
+}
+
+.carousel-dots .dot.active{
+  background:var(--gold1);
+  opacity:1;
+  transform:scale(1.2);
+}
+
+/* ===================== TEAM PAGE ===================== */
+
+.team-title{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  margin-bottom:10px;
+  color:var(--text);
+}
+
+.team-subtitle{
+  font-size:15px;
+  color:var(--sage);
+  margin-bottom:40px;
+}
+
+.team-grid-centered{
+  display:flex;
+  justify-content:center;
+  gap:2.5rem;
+  margin-top:2rem;
+  flex-wrap:wrap;
+}
+
+.team-card{
+  position:relative;
+  background:#ffffff;
+  border-radius:22px;
+  padding:2.2rem 2rem;
+  max-width:260px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 12px 32px rgba(0,0,0,0.06);
+  transition:0.3s ease;
+  border-top:4px solid rgba(199,160,71,0.35);
+}
+
+.team-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.09);
+}
+
+.founder-card{
+  border-top:4px solid #c7a047;
+}
+
+.team-img{
+  width:120px;
+  height:150px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:1rem;
+  box-shadow:0 6px 16px rgba(0,0,0,0.15);
+}
+
+.team-card h3{
+  font-size:1.3rem;
+  margin-bottom:0.4rem;
+  color:#133;
+}
+
+.designation,
+.team-role{
+  font-size:0.95rem;
+  color:#4e6963;
+  margin-bottom:1.3rem;
+}
+
+.team-bio{
+  font-size:14px;
+  color:var(--text);
+  line-height:1.5;
+  margin-top:10px;
+}
+
+/* ===================== QUALIFICATIONS BUTTON & LIST ===================== */
+
+.qualifications-btn{
+  background:transparent;
+  color:#c7a047;
+  border:2px solid #c7a047;
+  padding:8px 22px;
+  border-radius:999px;
+  font-size:0.95rem;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.qualifications-btn:hover{
+  background:#c7a047;
+  color:#ffffff;
+  box-shadow:0 8px 18px rgba(199,160,71,0.4);
+}
+
+.qualifications{
+  margin-top:1rem;
+  text-align:center;
+}
+
+/* final clean state of inline list */
+.qualifications-list{
+  display:none;
+  list-style:none;
+  padding-left:1.4rem;
+  border-left:3px solid #c7a047;
+  margin-top:1.2rem;
+}
+
+.qualifications-list li{
+  margin-bottom:0.7rem;
+  font-size:0.95rem;
+  color:#2f2f2f;
+  line-height:1.45rem;
+}
+
+/* section titles inside list */
+.qualifications-list .section-title{
+  font-weight:700;
+  color:#c7a047;
+  margin-top:1.1rem;
+  margin-bottom:0.5rem;
+  font-size:1rem;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+/* ===================== MODAL (CLEAN FINAL) ===================== */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(4px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+  z-index:9999;
+}
+
+.modal-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-content{
+  background:#fffdf7;
+  width:90%;
+  max-width:680px;
+  max-height:calc(100vh - 120px);
+  overflow-y:auto;
+  border-radius:22px;
+  padding:2.5rem 2.2rem;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  position:relative;
+  transform:translateY(30px) scale(0.96);
+  opacity:0;
+  transition:0.45s cubic-bezier(0.16,1,0.3,1);
+}
+
+.modal-overlay.open .modal-content{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:20px;
+  background:none;
+  border:none;
+  font-size:1.7rem;
+  color:#444;
+  cursor:pointer;
+}
+
+.modal-title{
+  text-align:center;
+  font-size:1.6rem;
+  font-weight:700;
+  color:#0f1111;
+  margin-bottom:0.5rem;
+  font-family:'Playfair Display', serif;
+}
+
+.modal-title::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:3px;
+  margin:0.6rem auto;
+  background:#c7a047;
+  border-radius:2px;
+}
+
+.modal-subtitle{
+  text-align:center;
+  font-size:1rem;
+  color:#4a635f;
+  margin-bottom:1.8rem;
+}
+
+.modal-qualifications{
+  list-style:none;
+  padding-left:1.4rem;
+  margin:0;
+  border-left:3px solid #c7a047;
+}
+
+.modal-qualifications li{
+  margin-bottom:0.75rem;
+  font-size:0.95rem;
+  color:#303030;
+  line-height:1.45rem;
+}
+
+.modal-qualifications .section-title{
+  margin-top:1.1rem;
+  margin-bottom:0.4rem;
+  font-weight:700;
+  font-size:1rem;
+  color:#c7a047;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+body.modal-open{
+  overflow:hidden;
+}
+
+/* ===================== CONTACT PAGE ===================== */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:30px;
+  margin:40px 0;
+}
+
+.contact-heading{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.input-field{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  margin-bottom:14px;
+  font-size:14px;
+}
+
+.input-field:focus{
+  border-color:var(--gold1);
+  outline:none;
+}
+
+.gold-link{
+  color:var(--gold1);
+  text-decoration:none;
+}
+
+.map-container{
+  margin-top:40px;
+}
+
+.map-container iframe{
+  width:100%;
+  height:360px;
+  border-radius:14px;
+  border:none;
+}
+
+.contact-info p{
+  margin-bottom:12px;
+  font-size:14.5px;
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* ===================== PRODUCTS PAGE ===================== */
+
+.page-title{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+.page-subtitle{
+  font-size:15px;
+  color:var(--sage);
+  max-width:700px;
+  margin:0 auto 40px;
+}
+
+.product-coming-soon{
+  max-width:480px;
+  margin:0 auto;
+  padding:30px;
+  border-left:5px solid var(--gold1);
+  background:var(--card);
+}
+
+.coming-img{
+  width:100px;
+  margin-bottom:20px;
+  opacity:0.85;
+}
+
+.coming-title{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin-bottom:10px;
+  color:var(--text);
+}
+
+.coming-desc{
+  font-size:14.5px;
+  color:var(--sage);
+  margin-bottom:20px;
+}
+
+/* ===================== CTA BLOCK (SERVICES PAGE) ===================== */
+
+.services-cta{
+  background:white;
+  padding:30px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+  max-width:600px;
+  margin:0 auto;
+}
+
+.services-cta h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.services-cta p{
+  color:var(--text-light);
+  margin-bottom:20px;
+}
+
+.primary-btn{
+  display:inline-block;
+  padding:12px 22px;
+  background:var(--gold);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:600;
+}
+
+.primary-btn:hover{
+  background:#a37931;
+}
+
+/* ===================== FOOTER ===================== */
+
+.footer{
+  text-align:center;
+  padding:32px;
+  background:var(--card);
+  color:var(--sage);
+  font-size:14px;
+  margin-top:40px;
+}
+
+/* ===================== WHATSAPP FLOAT ===================== */
+
+.whatsapp-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,0.18);
+}
+
+.whatsapp-float:hover{
+  transform:translateY(-4px);
+}
+
+/* ===================== ANIMATIONS ===================== */
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeIn{
+  to{ opacity:1; }
+}
+
+@keyframes heroFade{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes cardFade{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media(max-width:1100px){
+  .services-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:900px){
+  .services-grid.two-column{
+    grid-template-columns:1fr;
+  }
+
+  .header{
+    padding:18px 25px;
+  }
+
+  .page-hero h1{
+    font-size:32px;
+  }
+}
+
+@media(max-width:880px){
+  .header{
+    padding:15px 24px;
+  }
+  .nav-menu{
+    gap:18px;
+  }
+}
+
+@media(max-width:700px){
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .gallery-masonry{
+    column-count:1;
+  }
+}
+
+@media(max-width:540px){
+  .hero-logo h1{
+    font-size:26px;
+  }
+}
+/* ============================================================
+   ⭐ FIXED SERVICES / SPECIALIZATIONS / TESTS PAGE LAYOUT
+   ============================================================ */
+
+/* Center All Page Headings */
+.page-hero h1,
+.services-section h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--text);
+}
+
+/* Subtitle (only on services main page) */
+.page-hero p {
+  text-align: center;
+  max-width: 700px;
+  margin: 10px auto 30px;
+  color: var(--text-light);
+  font-size: 17px;
+}
+
+/* Premium 3-Column Grid */
+.services-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+/* Clean Premium Cards */
+.service-card {
+  background: var(--card-bg);
+  padding: 26px;
+  border-radius: 16px;
+  width: 100%;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  border: 1.3px solid rgba(184, 155, 94, 0.28); /* Thin Gold Border */
+  transition: 0.32s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+  border-color: rgba(184, 155, 94, 0.45);
+}
+
+.service-card h3 {
+  text-align: center;
+  margin-bottom: 14px;
+  color: #4b2c2c;
+  font-weight: 600;
+}
+
+.service-card p,
+.service-card ul {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.55;
+}
+
+/* Fix <ul> spacing */
+.service-card ul {
+  padding-left: 20px;
+}
+
+/* CTA Box spacing fix */
+.services-cta {
+  margin-top: 40px;
+}
+
+/* PAGE SPACING FIX */
+.services-section {
+  padding: 50px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* ============================================
+   PREMIUM GOLD UPGRADES — HEADINGS & CARDS
+   ============================================ */
+
+/* ---- GOLD LINE UNDER MAIN HEADINGS ---- */
+.page-hero h1,
+.premium-heading,
+.section-title-main {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.page-hero h1::after,
+.premium-heading::after,
+.section-title-main::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: #c7a047;
+  margin: 10px auto 0;
+  border-radius: 10px;
+}
+
+/* ---- GOLD BORDER FOR SERVICE CARDS ---- */
+.service-card {
+  border: 1px solid rgba(199, 160, 71, 0.25); /* subtle gold */
+  border-radius: 16px;
+  padding: 28px;
+  background: #fffdf9;
+  box-shadow: 0 8px 24px rgba(199, 160, 71, 0.12);
+}
+
+/* ---- PREMIUM CARD HOVER ---- */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(199, 160, 71, 0.22);
+}
+
+/* ---- ALIGNMENT FIX: MORE SPACING BETWEEN ROWS ---- */
+.services-grid {
+  gap: 40px !important;
+  margin-top: 40px;
+}
+
+/* ---- CENTER THE HEADINGS NICELY ---- */
+.page-hero h1,
+.services-page h1,
+.specializations-page h1,
+.tests-page h1 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ---- SUBHEADINGS CENTER ---- */
+.page-hero p {
+  max-width: 720px;
+  text-align: center;
+  margin: 10px auto 0;
+}
+/* ===================== A+ HEADINGS ===================== */
+
+.page-hero h1,
+.premium-heading,
+.section-title-main {
+  position: relative;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.page-hero h1::after,
+.premium-heading::after,
+.section-title-main::after {
+  content: "";
+  display: block;
+  width: 85px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c7a047, transparent);
+  margin: 12px auto 6px;
+  border-radius: 20px;
+  opacity: 0.85;
+}
+
+/* ===================== A+ SERVICE CARDS ===================== */
+
+.service-card {
+  background: #fffdf9;
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid rgba(199, 160, 71, 0.18);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.06);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #4e2e2e;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+/* GOLD GLOW HOVER */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.10),
+    0 0 22px rgba(199, 160, 71, 0.25);
+  border-color: rgba(199, 160, 71, 0.45);
+}
+
+/* Soft gold top border (very premium) */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #c7a047, #ebd4a2, #c7a047);
+  opacity: 0.35;
+  border-radius: 18px 18px 0 0;
+}
